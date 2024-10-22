@@ -156,11 +156,11 @@ Transform:
   m_GameObject: {fileID: 570609679}
   serializedVersion: 2
   m_LocalRotation: {x: 0.6848, y: -0, z: -0, w: 0.72873104}
-  m_LocalPosition: {x: -0.28239322, y: 0.21646595, z: 0.82166755}
-  m_LocalScale: {x: 0.094381325, y: -0.5667086, z: 0.09438133}
+  m_LocalPosition: {x: 0.365, y: -0.75600004, z: -0.33500004}
+  m_LocalScale: {x: 0.094381325, y: -0.5667087, z: 0.09438134}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1442998665}
+  m_Father: {fileID: 963194228}
   m_LocalEulerAnglesHint: {x: 86.44, y: 0, z: 0}
 --- !u!136 &570609681
 CapsuleCollider:
@@ -249,6 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2794797473155400709, guid: 502933823521a084aad2be760bb1d25f, type: 3}
   shootingPoint: {fileID: 1201738538}
+  playerCamera: {fileID: 963194227}
   projectileSpeed: 20
 --- !u!1 &705507993
 GameObject:
@@ -434,7 +435,8 @@ Transform:
   m_LocalPosition: {x: -0.6473932, y: 0.972466, z: 1.1566676}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 570609680}
   m_Father: {fileID: 1442998665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &963194229
@@ -686,7 +688,6 @@ Transform:
   m_Children:
   - {fileID: 963194228}
   - {fileID: 50153872}
-  - {fileID: 570609680}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1697112286
