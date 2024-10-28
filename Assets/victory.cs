@@ -1,34 +1,30 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class VictoryCondition : MonoBehaviour
 {
-    public int totalEnemies; // Total de enemigos
-    private int enemiesDestroyed = 0; // Enemigos destruidos
-    public Text victoryText; // Texto de victoria
+    public GameObject winText; // Texto de victoria
+    private int enemiesDestroyed = 0; // Contador de enemigos destruidos
+    public int totalEnemies = 3; // Total de enemigos necesarios para ganar
 
     void Start()
     {
-        victoryText.gameObject.SetActive(false); // Ocultar el texto de victoria al inicio
+        winText.SetActive(false); // Asegura que el texto esté oculto al inicio
     }
 
+    // Función pública para incrementar el contador de enemigos
     public void EnemyDestroyed()
     {
-        enemiesDestroyed++; // Incrementar el contador de enemigos destruidos
-        CheckVictoryCondition(); // Comprobar la condición de victoria
-    }
+        enemiesDestroyed++;
 
-    void CheckVictoryCondition()
-    {
-        if (enemiesDestroyed >= totalEnemies) // Si se han destruido todos los enemigos
+        if (enemiesDestroyed >= totalEnemies)
         {
-            ShowVictoryMessage(); // Mostrar el mensaje de victoria
+            ShowWinText(); // Muestra el mensaje de victoria cuando todos los enemigos hayan sido destruidos
         }
     }
 
-    void ShowVictoryMessage()
+    void ShowWinText()
     {
-        victoryText.gameObject.SetActive(true); // Activar el texto de victoria
-        Time.timeScale = 0; // Pausar el juego
+        winText.SetActive(true); // Muestra el texto de victoria
+        Time.timeScale = 0; // Pausa el juego
     }
 }

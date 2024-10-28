@@ -2,26 +2,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public GameObject winText; // Referencia al texto de victoria
-
-    void Start()
-    {
-        winText.SetActive(false); // Asegurarse de que el texto esté oculto al inicio
-    }
+    public VictoryCondition victoryCondition; // Referencia al controlador de victoria
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Projectile")) // Si el enemigo es golpeado por un proyectil
+        if (collision.gameObject.CompareTag("Projectile"))
         {
-            ShowWinText(); // Llama a la función para mostrar el cartel de victoria
+            victoryCondition.EnemyDestroyed(); // Llama a la función de conteo en VictoryCondition
             Destroy(gameObject); // Destruye el enemigo
         }
-    }
-
-    void ShowWinText()
-    {
-        winText.SetActive(true); // Muestra el texto de victoria
-        Time.timeScale = 0; // Pausa el juego
     }
 }
 
