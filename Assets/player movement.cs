@@ -1,26 +1,30 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f; // Velocidad de movimiento del jugador
-    private Rigidbody rb; // Referencia al componente Rigidbody del jugador
+    public float moveSpeed = 5f; // Velocidad de movimiento
+    private Rigidbody playerRigidbody; // Referencia al Rigidbody del jugador
 
     void Start()
     {
-        // Obtener el componente Rigidbody
-        rb = GetComponent<Rigidbody>();
+        playerRigidbody = GetComponent<Rigidbody>(); // Obtener el componente Rigidbody
     }
 
     void Update()
     {
-        // Leer la entrada del teclado
-        float moveHorizontal = Input.GetAxis("Horizontal"); // A y D para izquierda y derecha
-        float moveVertical = Input.GetAxis("Vertical"); // W y S para adelante y atrás
+        MovePlayer(); // Llamar a la función de movimiento en cada frame
+    }
 
-        // Crear un vector de movimiento
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+    void MovePlayer()
+    {
+        // Obtener las entradas del jugador
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        // Crear un vector de movimiento basado en la entrada
+        Vector3 movement = new Vector3(horizontal, 0, vertical).normalized * moveSpeed;
 
         // Aplicar el movimiento al Rigidbody
-        rb.MovePosition(transform.position + movement * speed * Time.deltaTime);
+        playerRigidbody.MovePosition(transform.position + movement * Time.deltaTime);
     }
 }
